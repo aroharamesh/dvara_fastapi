@@ -1,15 +1,11 @@
 import json
-from pydantic import BaseSettings
 from operator import itemgetter
-from fastapi import FastAPI, Request, Body, status, HTTPException, Response
+from fastapi import FastAPI, Body
 import requests
 from requests.exceptions import Timeout
-from fastapi.testclient import TestClient
 from commons import env, get_env, get_env_or_fail, _raise
 
 app = FastAPI()
-
-client = TestClient(app)
 
 async def create_user_data(data):
     customer_info = data['enrollmentDTO']['customer']
@@ -123,9 +119,3 @@ async def post_perdix_to_user_data(
     print(post_user_data)
     print(post_loan_data)
     return {"output": "success"}
-    
-
-def test_read_main():
-    response = client.get("/post_perdix_to_user_data")
-    assert response.status_code == 200
-    assert response.json() == {"msg": "Executing Successfully"}
