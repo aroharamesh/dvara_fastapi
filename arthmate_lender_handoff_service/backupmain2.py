@@ -11,6 +11,19 @@ app = FastAPI()
 
 client = TestClient(app)
 
+
+# class Settings(BaseSettings):
+#     app_name: str = "perdixData"
+#     source_api: ""
+#     user_create_api: str
+#     loan_create_api: str
+
+#     class Config:
+#         env_file = ".env"
+
+# def get_settings():
+#     return Settings()
+
 async def create_user_data(data):
     customer_info = data['enrollmentDTO']['customer']
     sm_user_id, firstName, lastName, middleName, gender, \
@@ -29,7 +42,20 @@ async def create_user_data(data):
     fatherLastName = (fatherLastName if fatherLastName else "")
     fatherMiddleName = (fatherMiddleName if fatherMiddleName else "")
     father_full_name = fatherFirstName + fatherMiddleName + fatherLastName
+    # Missing attributes
+    # "res_type": "Rent",
+    #     "shop_name": "xyz shop",
+    #     "shop_type": "Manufacturers",
+    #     "shop_address": "kolkata",
+    # "udhyog_aadhar": "Yes",
+    # "uan_number": "123456987",
+        # "poa_type": "1",
+        # "poa_number": "123456",
+    # "bureau_score": "650",
 
+    # "sm_score": "3",
+
+    # "sm_loan_eligibility": 25000.00,
     doorNo = (doorNo if doorNo else "")
     street = (street if street else "")
     locality = (locality if locality else "")
@@ -87,6 +113,13 @@ async def create_loan_data(data):
     loan_info = data['loanDTO']['loanAccount']
     loanAmount, interestRate, disbursementSchedules, tenure, processingFeeInPaisa, insuranceFee = itemgetter('loanAmount', 'interestRate', 'disbursementSchedules', 'tenure', 'processingFeeInPaisa', 'insuranceFee')(loan_info)
     disbursement_amount = disbursementSchedules[0]['disbursementAmount']
+    # "repayment_schedule_json":
+    #     "am_user_token": "6facc090-3a98-412c-8d0b-66999449406c",
+    # "sm_user_id": "SM000001250",
+    # "sm_loan_id": "SML00258995"
+
+    # "additional_charges": "250",
+    # "number_of_edis": "5"
     print(loanAmount, interestRate, disbursement_amount, processingFeeInPaisa)
     response = {
         "loan_amount": loanAmount,
@@ -102,26 +135,30 @@ async def create_loan_data(data):
         "insurance_charges": insuranceFee,
         "number_of_edis": "Not Found"
     }
+
     return response
 
 @app.post("/post_perdix_to_user_data")
 async def post_perdix_to_user_data(
         payload: dict = Body(...)
 ):
+    # user_request_url = f'http://apistaging.arthmate.com/spice/moneSDSapi/v1/user'
+    # loan_request_url = f'http://apistaging.arthmate.com/spice/money/api/v1/loan/request'
     user_info = await create_user_data(payload)
     loan_info = await create_loan_data(payload)
     print(user_info)
     print(loan_info)
     try:
+        # post_user_data = requests.post(user_request_url, user_info)
+        # post_loan_data = requests.post(loan_request_url, loan_info)
         user_create_api = get_env('destination-end-points','user-create-url','')
-        loan_create_api = get_env('destination-end-points','loan-request-url','')
         post_user_data = requests.post(user_create_api, user_info)
-        post_loan_data = requests.post(loan_create_api, loan_info)
+        # post_loan_data = requests.post(Settings.loan_create_api, loan_info)
     except Timeout as ex:
         print("Exeption Raised", ex)
     
     print(post_user_data)
-    print(post_loan_data)
+    # print(post_loan_data)
     return {"output": "success"}
     
 
