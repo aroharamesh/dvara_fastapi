@@ -20,7 +20,37 @@
         "loanProcessAction": null,
         "loanAccount": {
             "id": 169081,
-            "sm_loan_id":"",
+            "sm_loan_id": "SML00253001",
+            "sm_user_id": "SM000003001",
+            "repayment_schedule_json": [
+                {
+                    "int_amount": 91.0,
+                    "prin": 607.0,
+                    "emi_no": 1,
+                    "due_date": "2021-11-19",
+                    "emi_amount": 773.0
+                },
+                {
+                    "int_amount": 91.0,
+                    "prin": 608.0,
+                    "emi_no": 2,
+                    "due_date": "2021-12-20",
+                    "emi_amount": 743.0
+                }
+            ],
+            "additional_charges": "250",
+            "number_of_edis": "5",
+            "am_loan_id": "3",
+            "repayment_due_amount": 10.00,
+            "principal_due_amount": 70.00,
+            "interest_due_amount": 50.00,
+            "repayment_due_date": "2022-01-01",
+            "transfer_amount": 20.00,
+            "principal_transfer_amount": 10.00,
+            "interest_transfer_amount": 50.00,
+            "additional_charges_transfer_amount": 10.00,
+            "transfer_transaction_number": "TN0000001",
+            "transfer_transaction_date": "2022-02-17",
             "version": 37,
             "accountNumber": null,
             "bankId": 1,
@@ -446,22 +476,7 @@
             "guarantors": [],
             "ornamentsAppraisals": [],
             "loanDocuments": [],
-            "repayment_schedule_json": [
-                {
-                    "int_amount": 91.0,
-                    "prin": 607.0,
-                    "emi_no": 1,
-                    "due_date": "2021-11-19",
-                    "emi_amount": 773.0
-                },
-                {
-                    "int_amount": 91.0,
-                    "prin": 608.0,
-                    "emi_no": 2,
-                    "due_date": "2021-12-20",
-                    "emi_amount": 743.0
-                }
-            ],
+            
             "disbursementSchedules": [
                 {
                     "id": 94000,
@@ -679,6 +694,19 @@
         "customer": {
             "id": 234865,
             "sm_user_id":"SM000003001",
+            "mobilePhone": "9955660011",
+            "panNo": "EFGPN1000M",
+            "email": "aroh12345@gmail.com",
+            "shop_name": "xyz shop",
+            "shop_type": "Manufacturers",
+            "shop_address": "Bengaluru",
+            "udhyog_aadhar": "Yes",
+            "uan_number": "123456987",
+            "pan_number": "ADEEN8746N",
+            "poa_type": "1",
+            "bureau_score": "650",
+            "sm_score": "3",
+            "sm_loan_eligibility": 25000.00,
             "version": 10,
             "enrollmentId": "90171911211819042546",
             "urnNo": "2111199294311001",
@@ -693,7 +721,6 @@
             "citizenOfIndia": null,
             "employmentStatus": null,
             "landLineNo": null,
-            "mobilePhone": "8690271023",
             "stdCode": null,
             "dateOfBirth": {
                 "year": 1997,
@@ -760,7 +787,6 @@
             "addressProof": "Aadhar Card",
             "identityProof": "Voter Card",
             "identityProofNo": "YHT1015502",
-            "panNo": "",
             "yearsOfExperience": null,
             "nameOfRo": "15306",
             "date": {
@@ -959,7 +985,6 @@
             "isBusinessEffectingTheEnvironment": null,
             "stockMaterialManagement": null,
             "customerWalkinToBusiness": null,
-            "email": null,
             "careOf": null,
             "businessSignboardImage": null,
             "existingLoan": null,
@@ -1407,6 +1432,7 @@
                 {
                     "customerId": 234865,
                     "loanAmount": 50000,
+
                     "reportType": "INDIVIDUAL",
                     "requestType": "INQUIRY",
                     "cbDate": {
