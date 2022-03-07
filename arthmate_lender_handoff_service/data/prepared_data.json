@@ -662,6 +662,10 @@
         "enrollmentAction": null,
         "customer": {
             "id": 234865,
+            "smUserId": "SM0000013013",
+            "shopName": "ABC Shop",
+            "shopType": "Manufacturers",
+            "shop_address": "Bengaluru",
             "version": 10,
             "enrollmentId": "90171911211819042546",
             "urnNo": "2111199294311001",

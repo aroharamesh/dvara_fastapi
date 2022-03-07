@@ -704,6 +704,7 @@
             "uan_number": "123456987",
             "pan_number": "ADEEN8746N",
             "poa_type": "1",
+            "poa_number": "123456",
             "bureau_score": "650",
             "sm_score": "3",
             "sm_loan_eligibility": 25000.00,
