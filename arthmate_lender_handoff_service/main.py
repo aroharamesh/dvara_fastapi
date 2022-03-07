@@ -82,6 +82,12 @@ async def post_automator_data(
                 document_info = await create_user_document_upload_data(payload['loanDTO']['loanAccount'], sm_user_id, am_user_token)
 
                 # post the file along with other fields for the document upload api endpoint
+                # S3 path file fname
+                s3_file_name = ""
+
+                # download the file and save it in the app direcotry
+
+                # upload the file to the endpoint
                 files = {'file': open('ramesh.jpg', 'rb')}
                 document_response = requests.post(user_document_url,
                                                   auth=HTTPBasicAuth(settings.username, settings.password),
