@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class LogConfig(BaseModel):
     """Logging configuration to be set for the server"""
 
@@ -25,5 +26,5 @@ class LogConfig(BaseModel):
         },
     }
     loggers = {
-        "mycoolapp": {"handlers": ["default"], "level": LOG_LEVEL},
+        "arthmate-lender-handoff-service": {"handlers": ["default"], "level": LOG_LEVEL},
     }
