@@ -56,12 +56,13 @@ async def post_automator_data(
         }
 
         # Post the prepared user data to the endpoint - 1
+        logger.info(f"Step1 - Request - Posting the user data to: {user_create_url}")
         user_response = requests.post(
             user_create_url,
             auth=HTTPBasicAuth(settings.username, settings.password),
             json=user_info,
             headers=headers)
-
+        logger.info(f"Step1 - Response Status - {user_response}")
         # Check for the status codes and the message from the response
         if user_response.status_code == 401:
             logger.error("Not Authorised to post the data, please login with correct credentials: ")
@@ -72,7 +73,7 @@ async def post_automator_data(
         elif user_response.status_code == 200:
             # convert the response to dictionary to get the uuid
             user_dict = response_to_dict(user_response)
-
+            logger.info(f"Step1 - Response Message- {user_dict}")
             # check whether there is body attribute in the response to get used_by_uuid
             response_uuid_check = user_dict.get('body')
             if response_uuid_check:
@@ -191,6 +192,3 @@ async def post_automator_data(
         logger.error("Error Occurred: ", ex)
 
     return {"result": "success"}
-
-
-
